@@ -1,0 +1,28 @@
+---
+import "@fortawesome/fontawesome-free/css/fontawesome.css";
+import classNames from "classnames";
+
+export type Props = {
+  class?: string;
+};
+
+const { class: className } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Astro</title>
+  </head>
+  <body
+    class={classNames(
+      "min-h-full bg-slate-50 text-slate-800",
+      className && className
+    )}
+  >
+    <slot />
+  </body>
+</html>

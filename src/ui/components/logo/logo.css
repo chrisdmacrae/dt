@@ -1,0 +1,31 @@
+:root {
+  --shine-duration: 3s;
+  --shine-easing: linear;
+  --shine-delay: 0s;
+}
+
+@keyframes shine { 
+  20%, 100% { transform: translateX(150%); }
+}
+
+.animate-shine,
+.hover\:animate-shine:hover {
+  position: relative;
+  overflow: hidden;
+
+  &::after {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      color: rgba(255, 255, 255, 0);
+      background-color: rgba(255, 255, 255,0);
+      background-image: linear-gradient(to right,
+          rgba(255, 255, 255, 0) 25%,
+          rgba(255, 255, 255, .5) 50%,
+          rgba(255, 255, 255, 0) 75%);
+      transform: skewX(-20deg) translateX(-100%);
+      animation: var(--shine-duration) var(--shine-easing) var(--shine-delay) infinite forwards shine;
+  }
+}
